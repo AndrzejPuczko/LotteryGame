@@ -34,8 +34,15 @@ body {
 
 	&__logo {
 		img {
-			width:150px;
+			width: 120px;
 		}
+	}
+
+	p {
+		font-size: 2rem;
+		color: #000;
+		padding-top: 5px;
+		font-weight: 600;
 	}
 }
 
@@ -45,33 +52,83 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		min-width: 250px;
+		margin-top: 10px;
 		padding-top: 10px;
+		border-radius: 6px;
+		box-shadow: 1px 1px 10px 0px #5e5e5e;
 		background-image: url('./../images/paper.webp');
 
 		&__name {
 			padding: 5px 15px 5px 15px;
 			background: $main-color;
-			color: rgb(219, 2, 2);
+			color: $red;
 			text-transform: uppercase;
 
 			h3 {
 				font-weight: 900;
 			}
 		}
+
+		&__border {
+			display: block;
+			width: 90%;
+			height: 7px;
+			margin: 10px 0;
+			background: $red;
+			opacity: 0.8;
+		}
+
 		&__numbers {
 			text-align: center;
-			padding: 20px;
+			padding: 0 20px;
 
 			button {
+				font-size: 20px;
+				font-family: 'DM Mono', monospace;
 				background: none;
-				border: 1px solid #e01111;
+				border: 1px solid $red;
+				color: $red;
+				font-weight: 700;
+				width: 40px;
+				height: 40px;
+				margin: 3px;
+				cursor: pointer;
+			}
+
+			.cross {
+				background-image: url('./../images/cross.webp');
+				color: #000;
 			}
 		}
 	}
 
+	.play {
+		width: 100%;
+		background-color: $main-color;
+		border: none;
+		margin-top: 25px;
+		margin: 20 auto;
+		border-radius: 6px;
+		color: $red;
+		font-size: 17px;
+		padding: 10px 20px;
+		transition: 0.5s;
+		font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
+		box-shadow: 1px 1px 10px 0px #5e5e5e;
+		text-transform: uppercase;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.play:hover {
+		background-color: #e4e6eb;
+		color: #050505;
+	}
+
 	.ball {
 		&__number {
-			display: none; // ma być flex
+			display: flex; // ma być flex
 			justify-content: center;
 			align-items: center;
 			gap: 10px;
@@ -94,7 +151,7 @@ body {
 	}
 
 	.receipt {
-		display: none; // ma być flex;
+		display: flex; // ma być flex;
 		justify-content: space-between;
 		background-image: url('./../images/paper.webp');
 		max-width: 300px;

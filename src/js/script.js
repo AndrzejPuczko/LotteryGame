@@ -14,6 +14,8 @@ let reciptNumbers
 let reciptDate
 let reset
 let congrats
+let title
+let coupon
 
 const main = () => {
 	prepareDOMElements()
@@ -34,6 +36,8 @@ const prepareDOMElements = () => {
 	reciptDate = document.querySelector('.receipt__main-date p')
 	reset = document.querySelectorAll('.reset')
 	congrats = document.querySelector('.congrats')
+	title = document.querySelector('.title__text')
+	coupon = document.querySelector('.coupon')
 }
 
 const prepareDOMEvents = () => {
@@ -50,12 +54,14 @@ const choseYourNumber = e => {
 			switch (numbers) {
 				case numbers:
 					userNumbers.push(numbers)
+					e.target.setAttribute("class", "cross");
 					break
 			}
 		} else {
 			alert('Maksymalnie 6 cyfr')
 		}
 	}
+	
 	console.log(userNumbers)
 }
 
@@ -109,6 +115,12 @@ const checkYourNumbers = () => {
 	}
 }
 
+const hideCoupon = () => {
+	title.classList.add('hide')
+	coupon.classList.add('hide')
+
+}
+
 function playGame() {
 	while (lotteryNumbers.length < 6) {
 		const randomNumber = Math.round(Math.random() * 14) + 1
@@ -159,8 +171,13 @@ function playGame() {
 	currentData()
 	congratsText()
 	historyText()
-
 	reciptNumbers.textContent = userNumbers.join(' ')
+	hideCoupon()
+
+
+
+	
+	btnNumbers.forEach(item => item.setAttribute("class", ""))
 	userNumbers = []
 	lotteryNumbers = []
 	score = 0
