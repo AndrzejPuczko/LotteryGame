@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/svg+xml" href="images/vite.svg" /> <!-- Dodać favicon-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title></title>
+</head>
+
+<body>
+
+  <section class="wrapper">
+
+    <header class="title">
+      <div class="title__logo"><img src="images/logo.webp" alt=""></div>
+      <div class="title__text">
+        <h1>Loteria</h1>
+        <p>Skreśl swoje numery:</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="coupon">
+        <div class="coupon__name">
+          <h3>łotto</h3>
+        </div>
+        <div class="coupon__numbers">
+
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <br>
+          <button>6</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>10</button>
+          <br>
+          <button>11</button>
+          <button>12</button>
+          <button>13</button>
+          <button>14</button>
+          <button>15</button>
+
+        </div>
+      </div>
+      <button class="play">sprawdz</button>
+
+      <div class="balls">
+        <div class="ball__number">
+          <p class="ball__number--1 reset"></p>
+          <p class="ball__number--2 reset"></p>
+          <p class="ball__number--3 reset"></p>
+          <p class="ball__number--4 reset"></p>
+          <p class="ball__number--5 reset"></p>
+          <p class="ball__number--6 reset"></p>
+        </div>
+      </div>
+
+      <div class="receipt">
+        <div class="receipt__border">
+          <p>w.łotto.pl www.łotto.pl www.łotto.pl www</p></div>
+
+        <div class="receipt__main">
+          <div class="receipt__main-info">
+            <p>loteriada trwa</p>
+            <p>graj z łotto</p>
+            <p>to szansa na 1 000 000 zł!</p>
+           
+          </div>
+          <img src="images/logo.webp" alt="" class="receipt__main-logo">
+          <div class="receipt__main-date">
+            <p></p>
+          </div>
+          <div class="receipt__main-usernumbers">
+            <p>twoje numery to:</p>
+            <p>------------------------</p>
+            <p class="user__numbers"></p>
+            <p>------------------------</p>
+            <p class="congrats"></p>
+          </div>
+
+
+        </div>
+
+        <div class="receipt__border">
+          <p>www.łotto.pl www.łotto.pl www.łotto.pl w</p></div>
+
+      </div>
+
+      <div class="history">
+        <p>Historia Wyników:</p>
+        <ol></ol>
+      </div>
+    </main>
+
+  </section>
+
+
+
+  <script type="module" src="/js/script.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

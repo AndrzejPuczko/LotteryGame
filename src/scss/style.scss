@@ -1,0 +1,147 @@
+@use './colors' as *;
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	// border:solid red 1px;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
+	background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+	height: 100vh;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.title {
+	text-align: center;
+
+	&__logo {
+		img {
+			width:150px;
+		}
+	}
+}
+
+.main {
+	.coupon {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-top: 10px;
+		background-image: url('./../images/paper.webp');
+
+		&__name {
+			padding: 5px 15px 5px 15px;
+			background: $main-color;
+			color: rgb(219, 2, 2);
+			text-transform: uppercase;
+
+			h3 {
+				font-weight: 900;
+			}
+		}
+		&__numbers {
+			text-align: center;
+			padding: 20px;
+
+			button {
+				background: none;
+				border: 1px solid #e01111;
+			}
+		}
+	}
+
+	.ball {
+		&__number {
+			display: none; // ma być flex
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+
+			p {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 20px;
+				width: 75px;
+				height: 75px;
+				border-radius: 50%;
+				font-weight: bold;
+				background: $main-color;
+				color: #000000;
+				justify-content: center;
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.receipt {
+		display: none; // ma być flex;
+		justify-content: space-between;
+		background-image: url('./../images/paper.webp');
+		max-width: 300px;
+		min-height: 350px;
+		border-radius: 6px;
+		overflow: hidden;
+		color: #686868;
+
+		&__border {
+			writing-mode: vertical-rl;
+			background-color: #ffcdcd;
+			color: #fff;
+			font-weight: bold;
+		}
+
+		&__main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-family: 'DM Mono', monospace;
+			text-align: center;
+			text-transform: uppercase;
+
+			&-info,
+			&-usernumbers {
+				padding-top: 15px;
+				font-size: 13px;
+			}
+
+			&-logo {
+				padding-top: 10px;
+				max-width: 60px;
+				filter: grayscale(1);
+			}
+
+			&-date {
+				padding-top: 15px;
+				font-size: 13px;
+			}
+
+			.congrats {
+				padding-top: 15px;
+			}
+		}
+	}
+
+	.history {
+		display: none;
+	}
+}
