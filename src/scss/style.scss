@@ -20,6 +20,39 @@ body {
 	height: 100vh;
 }
 
+@keyframes shake {
+	0% {opacity: 0;}
+	1%,
+	99% {
+		transform: translateX(0);
+	}
+	31%{opacity: 1;}
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-10px);
+	}
+	20%,
+	40%,
+	60% {
+		transform: translateX(10px);
+		
+	}
+	80% {
+		transform: translateX(8px);
+	}
+	90% {
+		transform: translateX(-8px);
+	}
+	100% {transform: translateX(0);}
+}
+
+@keyframes show-result {
+	0% {opacity: 0}
+	100% {opacity: 1;}
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -38,12 +71,17 @@ body {
 		}
 	}
 
-	p {
-		font-size: 2rem;
-		color: #000;
-		padding-top: 5px;
-		font-weight: 600;
+	&__text {
+		display: flex;
+		flex-direction: column;
+		p {
+			font-size: 2rem;
+			color: #000;
+			padding-top: 5px;
+			font-weight: 600;
+		}
 	}
+
 }
 
 .main {
@@ -104,6 +142,8 @@ body {
 	}
 
 	.play {
+		display:flex;
+		justify-content: center;
 		width: 100%;
 		background-color: $main-color;
 		border: none;
@@ -126,13 +166,51 @@ body {
 		color: #050505;
 	}
 
+	.again {
+		display:none;
+		max-width: 250px;
+		text-align: center;
+		margin: 0 auto;
+		justify-content: center;
+		animation: show-result 1s 2.4s both;
+	}
+
 	.ball {
 		&__number {
-			display: flex; // ma być flex
+			display: none;
 			justify-content: center;
 			align-items: center;
 			gap: 10px;
+			margin-top:20px;
+			
 
+			
+			&--1 {
+				
+				animation: shake 0.8s  cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+			&--2 {
+				animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+			&--3 {
+				animation: shake 0.8s 0.8s  cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+			&--4 {
+				animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+			&--5 {
+				animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+			&--6 {
+				animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+			}
+
+			.reset {
+				
+				box-shadow:  2px 2px 5px #5e5e5e
+			}
+
+		
 			p {
 				display: flex;
 				justify-content: center;
@@ -151,14 +229,17 @@ body {
 	}
 
 	.receipt {
-		display: flex; // ma być flex;
+		display: none; // ma być flex;
 		justify-content: space-between;
 		background-image: url('./../images/paper.webp');
 		max-width: 300px;
-		min-height: 350px;
+		margin: 15px auto;
+		min-height: 300px;
 		border-radius: 6px;
 		overflow: hidden;
 		color: #686868;
+		box-shadow: 2px 4px 6px 0px #898989;
+		animation: show-result 1s 2.4s both;
 
 		&__border {
 			writing-mode: vertical-rl;
@@ -200,5 +281,11 @@ body {
 
 	.history {
 		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top:15px;
+		font-weight: 600;
+		animation: show-result 1s 2.4s both;
 	}
 }
