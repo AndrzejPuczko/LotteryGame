@@ -185,6 +185,14 @@ const playAgain = () => {
 	receipt.setAttribute('style', 'display:none;')
 	btnAgain.setAttribute('style', 'display:none;')
 }
+const winner = () => {
+	if (score === 6) {
+		setTimeout(() => {
+			errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
+			error.classList.add('display-flex')
+		}, 2800)
+	}
+}
 
 const playGame = () => {
 	while (lotteryNumbers.length < 6) {
@@ -238,13 +246,8 @@ const playGame = () => {
 	historyText()
 	hideCoupon()
 	showResult()
+	winner()
 
-	if (score === 6) {
-		setTimeout(() => {
-			errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
-			error.classList.add('display-flex')
-		}, 2800)
-	}
 
 	btnNumbers.forEach(item => item.setAttribute('class', ''))
 	userNumbers = []
