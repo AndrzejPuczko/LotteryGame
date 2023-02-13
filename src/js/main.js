@@ -22,6 +22,9 @@ let reset
 let congrats
 let title
 let coupon
+let error
+let errorInfo
+let errorBtnClose
 
 const main = () => {
 	prepareDOMElements()
@@ -48,31 +51,37 @@ const prepareDOMElements = () => {
 	title = document.querySelector('.title__text')
 	coupon = document.querySelector('.coupon')
 	btnAgain = document.querySelector('.again')
+	error = document.querySelector('.error')
+	errorInfo = document.querySelector('.error__box-info')
+	errorBtnClose = document.querySelector('.error__box-close')
 }
 
 const prepareDOMEvents = () => {
 	btnNumbers.forEach(item => item.addEventListener('click', choseYourNumber))
 	startLottery.addEventListener('click', checkYourNumbers)
 	btnAgain.addEventListener('click', playAgain)
+	errorBtnClose.addEventListener('click', closeErrorInfo)
 }
 
 const choseYourNumber = e => {
 	const numbers = parseInt(e.target.innerHTML)
 	if (userNumbers.includes(numbers)) {
-		alert('ten sam numer')
+		errorInfo.textContent = 'Nie można skreślić dwa razy tej samej liczby'
+		error.classList.add('display-flex')
 	} else {
 		if (userNumbers.length < 6) {
 			switch (numbers) {
 				case numbers:
 					userNumbers.push(numbers)
-					e.target.setAttribute("class", "cross");
+					e.target.setAttribute('class', 'cross')
 					break
 			}
 		} else {
-			alert('Maksymalnie 6 cyfr')
+			errorInfo.textContent = 'Maksymalnie 6 liczb'
+			error.classList.add('display-flex')
 		}
 	}
-	
+
 	console.log(userNumbers)
 }
 
@@ -120,37 +129,62 @@ const historyText = () => {
 
 const checkYourNumbers = () => {
 	if (userNumbers.length < 6) {
-		alert('Za mało cyfr musi być 6')
+		switch (userNumbers.length) {
+			case 0:
+				errorInfo.textContent = 'Proszę skreślić 6 liczb'
+				error.classList.add('display-flex')
+				break
+			case 1:
+				errorInfo.textContent = 'Proszę skreślić jeszcze 5 liczb'
+				error.classList.add('display-flex')
+				break
+			case 2:
+				errorInfo.textContent = 'Proszę skreślić jeszcze 4 liczby'
+				error.classList.add('display-flex')
+				break
+			case 3:
+				errorInfo.textContent = 'Proszę skreślić jeszcze 3 liczby'
+				error.classList.add('display-flex')
+				break
+			case 4:
+				errorInfo.textContent = 'Proszę skreślić jeszcze 2 liczby'
+				error.classList.add('display-flex')
+				break
+			case 5:
+				errorInfo.textContent = 'Proszę skreślić ostatnią liczbę'
+				error.classList.add('display-flex')
+				break
+		}
 	} else {
 		playGame()
 	}
 }
 
+const closeErrorInfo = () => {
+	error.classList.remove('display-flex')
+}
+
 const hideCoupon = () => {
-	coupon.setAttribute('style' ,'display:none;')
-	title.setAttribute('style' ,'display:none;')
-	startLottery.setAttribute('style' ,'display:none;')
-
-
+	coupon.setAttribute('style', 'display:none;')
+	title.setAttribute('style', 'display:none;')
+	startLottery.setAttribute('style', 'display:none;')
 }
 
 const showResult = () => {
-	ballNumber.setAttribute('style' ,'display:flex;')
-	receipt.setAttribute('style' ,'display:flex;')
-	history.setAttribute('style' ,'display:flex;')
-	btnAgain.setAttribute('style' ,'display:flex;')
-	
+	ballNumber.setAttribute('style', 'display:flex;')
+	receipt.setAttribute('style', 'display:flex;')
+	history.setAttribute('style', 'display:flex;')
+	btnAgain.setAttribute('style', 'display:flex;')
 }
 
 const playAgain = () => {
-	coupon.setAttribute('style' ,'display:flex;')
-	title.setAttribute('style' ,'display:flex;')
-	startLottery.setAttribute('style' ,'display:flex;')
-	ballNumber.setAttribute('style' ,'display:none;')
-	receipt.setAttribute('style' ,'display:none;')
-	btnAgain.setAttribute('style' ,'display:none;')
+	coupon.setAttribute('style', 'display:flex;')
+	title.setAttribute('style', 'display:flex;')
+	startLottery.setAttribute('style', 'display:flex;')
+	ballNumber.setAttribute('style', 'display:none;')
+	receipt.setAttribute('style', 'display:none;')
+	btnAgain.setAttribute('style', 'display:none;')
 }
-
 
 const playGame = () => {
 	while (lotteryNumbers.length < 6) {
@@ -196,23 +230,30 @@ const playGame = () => {
 		ballNumberSix.style.background = backgroundColor
 		score++
 	}
-	console.log(`Wynik to${score}`)
-	console.log(`Wynik loterii ` + lotteryNumbers)
-	console.log(`Twoje numery` + userNumbers)
+
+	receiptNumbers.textContent = userNumbers.join(' ')
 
 	currentData()
 	congratsText()
 	historyText()
-	receiptNumbers.textContent = userNumbers.join(' ')
-
 	hideCoupon()
 	showResult()
 
-	
-	btnNumbers.forEach(item => item.setAttribute("class", ""))
+	if (score === 6) {
+		setTimeout(() => {
+			errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
+			error.classList.add('display-flex')
+		}, 2800)
+	}
+
+	btnNumbers.forEach(item => item.setAttribute('class', ''))
 	userNumbers = []
 	lotteryNumbers = []
 	score = 0
 }
 
 document.addEventListener('DOMContentLoaded', main)
+
+// info na temat 6 cufr i tych samych oraz scss @media querys
+// poustawiać JS ładnie
+// ustaiwenia scss ładnie
