@@ -11,22 +11,24 @@
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
+	background: $background;
 }
 
 body {
-	font-size: 1.6rem;
-	font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
-	background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
 	min-height: 100vh;
 	height: 100%;
+	font-size: 1.6rem;
+	font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
+	background: linear-gradient(to top, #4481eb 0%, #04befe 100%) no-repeat;
 }
 
-@keyframes shake {
+@-webkit-keyframes shake {
 	0% {
 		opacity: 0;
 	}
 	1%,
 	99% {
+		-webkit-transform: translateX(0);
 		transform: translateX(0);
 	}
 	31% {
@@ -36,17 +38,59 @@ body {
 	30%,
 	50%,
 	70% {
+		-webkit-transform: translateX(-10px);
 		transform: translateX(-10px);
 	}
 	20%,
 	40%,
 	60% {
+		-webkit-transform: translateX(10px);
 		transform: translateX(10px);
 	}
 	80% {
+		-webkit-transform: translateX(8px);
 		transform: translateX(8px);
 	}
 	90% {
+		-webkit-transform: translateX(-8px);
+		transform: translateX(-8px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes shake {
+	0% {
+		opacity: 0;
+	}
+	1%,
+	99% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+	31% {
+		opacity: 1;
+	}
+	10%,
+	30%,
+	50%,
+	70% {
+		-webkit-transform: translateX(-10px);
+		transform: translateX(-10px);
+	}
+	20%,
+	40%,
+	60% {
+		-webkit-transform: translateX(10px);
+		transform: translateX(10px);
+	}
+	80% {
+		-webkit-transform: translateX(8px);
+		transform: translateX(8px);
+	}
+	90% {
+		-webkit-transform: translateX(-8px);
 		transform: translateX(-8px);
 	}
 	100% {
@@ -68,26 +112,30 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	max-width: 1400px;
 	margin: 0 auto;
+	padding-top: 20px;
+	max-width: 300px;
 }
 
 .title {
 	text-align: center;
+	color: $text;
 
 	&__logo {
 		img {
-			width: 120px;
+			width: 80px;
 		}
 	}
 
 	&__text {
 		display: flex;
 		flex-direction: column;
-		p {
+		h1 {
 			font-size: 2rem;
-			color: #000;
+		}
+		p {
 			padding-top: 5px;
+			font-size: 1.7rem;
 			font-weight: 600;
 		}
 	}
@@ -99,18 +147,19 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		min-width: 250px;
 		margin-top: 10px;
 		padding-top: 10px;
+		min-width: 250px;
+		background-image: url('./../images/paper.webp');
 		border-radius: 6px;
 		box-shadow: 1px 1px 10px 0px #5e5e5e;
-		background-image: url('./../images/paper.webp');
 
 		&__name {
 			padding: 5px 15px 5px 15px;
+			text-transform: uppercase;
 			background: $main-color;
 			color: $red;
-			text-transform: uppercase;
+			border-radius: 6px;
 
 			h3 {
 				font-weight: 900;
@@ -119,33 +168,34 @@ body {
 
 		&__border {
 			display: block;
+			margin: 10px 0;
 			width: 90%;
 			height: 7px;
-			margin: 10px 0;
 			background: $red;
+			border-radius: 6px;
 			opacity: 0.8;
 		}
 
 		&__numbers {
-			text-align: center;
 			padding: 0 20px;
+			text-align: center;
 
 			button {
-				font-size: 20px;
-				font-family: 'DM Mono', monospace;
-				background: none;
-				border: 1px solid $red;
-				color: $red;
-				font-weight: 700;
+				margin: 3px;
 				width: 40px;
 				height: 40px;
-				margin: 3px;
+				font-family: 'DM Mono', monospace;
+				font-size: 2rem;
+				font-weight: 700;
+				color: $red;
+				background: none;
+				border: 1px solid $red;
 				cursor: pointer;
 			}
 
 			.cross {
-				background-image: url('./../images/cross.webp');
 				color: #000;
+				background-image: url('./../images/cross.webp');
 			}
 		}
 	}
@@ -153,34 +203,33 @@ body {
 	.play {
 		display: flex;
 		justify-content: center;
+		margin: 20px auto;
+		padding: 8px 20px;
 		width: 100%;
+		font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $red;
 		background-color: $main-color;
 		border: none;
-		margin-top: 25px;
-		margin: 20 auto;
 		border-radius: 6px;
-		color: $red;
-		font-size: 17px;
-		padding: 10px 20px;
-		transition: 0.5s;
-		font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
 		box-shadow: 1px 1px 10px 0px #5e5e5e;
-		text-transform: uppercase;
-		font-weight: bold;
+		transition: 0.5s;
 		cursor: pointer;
 	}
 
 	.play:hover {
+		color: $text;
 		background-color: #e4e6eb;
-		color: #050505;
 	}
 
 	.again {
 		display: none;
+		justify-content: center;
+		margin: 0 auto;
 		max-width: 250px;
 		text-align: center;
-		margin: 0 auto;
-		justify-content: center;
 		animation: show-result 1s 2.4s both;
 	}
 
@@ -189,25 +238,31 @@ body {
 			display: none;
 			justify-content: center;
 			align-items: center;
-			gap: 10px;
 			margin-top: 20px;
+			gap: 10px;
 
 			&--1 {
+				-webkit-animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 			&--2 {
+				-webkit-animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 			&--3 {
+				-webkit-animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 			&--4 {
+				-webkit-animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 			&--5 {
+				-webkit-animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 			&--6 {
+				-webkit-animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 			}
 
@@ -219,15 +274,14 @@ body {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				font-size: 20px;
-				width: 75px;
-				height: 75px;
-				border-radius: 50%;
+				width: 40px;
+				height: 40px;
+				font-size: 1.6rem;
 				font-weight: bold;
-				background: $main-color;
-				color: #000000;
-				justify-content: center;
 				text-decoration: underline;
+				color: $text;
+				background: $main-color;
+				border-radius: 50%;
 			}
 		}
 	}
@@ -235,21 +289,21 @@ body {
 	.receipt {
 		display: none; // ma być flex;
 		justify-content: space-between;
-		background-image: url('./../images/paper.webp');
-		max-width: 300px;
 		margin: 15px auto;
+		max-width: 250px;
 		min-height: 300px;
-		border-radius: 6px;
-		overflow: hidden;
 		color: #686868;
+		background-image: url('./../images/paper.webp');
+		border-radius: 6px;
 		box-shadow: 2px 4px 6px 0px #898989;
+		overflow: hidden;
 		animation: show-result 1s 2.4s both;
 
 		&__border {
-			writing-mode: vertical-rl;
-			background-color: #ffcdcd;
-			color: #fff;
 			font-weight: bold;
+			color: #fff;
+			background-color: #ffcdcd;
+			writing-mode: vertical-rl;
 		}
 
 		&__main {
@@ -263,7 +317,7 @@ body {
 			&-info,
 			&-usernumbers {
 				padding-top: 15px;
-				font-size: 13px;
+				font-size: 1.3rem;
 			}
 
 			&-logo {
@@ -274,7 +328,7 @@ body {
 
 			&-date {
 				padding-top: 15px;
-				font-size: 13px;
+				font-size: 1.3rem;
 			}
 
 			.congrats {
@@ -289,21 +343,26 @@ body {
 		justify-content: center;
 		align-items: center;
 		margin-top: 15px;
+		padding-bottom: 20px;
 		font-weight: 600;
 		animation: show-result 1s 2.4s both;
+
+		p {
+			padding-bottom: 8px;
+		}
 	}
 }
 
 .error {
-	display: none;
 	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
 	justify-content: center;
 	align-items: center;
-	left: 0;
-	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: hsla(0, 11%, 11%, 0.418);
+	background-color: #1f19196b;
 
 	&__box {
 		position: relative;
@@ -311,26 +370,48 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		width: 300px;
+		height: 140px;
 		font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
 		font-weight: 600;
-		background: rgb(231, 231, 231);
-		width: 300px;
-		height: 100px;
+		text-align: center;
+		background: #e7e7e7;
 		border-radius: 6px;
 
 		&-close {
 			position: absolute;
-			right: 10px;
-			top: 10px;
+			top: 12px;
+			right: 12px;
+			width: 32px;
+			height: 32px;
+			opacity: 0.8;
+
+			&:hover {
+				opacity: 1;
+			}
+			&::before,
+			&::after {
+				content: ' ';
+				position: absolute;
+				width: 3px;
+				height: 23px;
+				background-color: $red;
+			}
+			&:before {
+				transform: rotate(45deg);
+			}
+			&:after {
+				transform: rotate(-45deg);
+			}
 		}
 
 		&-name {
-			padding: 5px 15px 5px 15px;
 			margin-bottom: 15px;
-			border-radius: 6px;
-			background: $main-color;
-			color: $red;
+			padding: 5px 15px 5px 15px;
 			text-transform: uppercase;
+			color: $red;
+			background: $main-color;
+			border-radius: 6px;
 
 			h3 {
 				font-size: 1.3rem;
@@ -341,5 +422,66 @@ body {
 }
 
 .display-flex {
-	display:flex;
+	display: flex;
+}
+
+@media (min-width: 576px) {
+	.wrapper {
+		max-width: 500px;
+	}
+	.title {
+		&__logo {
+			img {
+				width: 100px;
+			}
+		}
+	}
+	.main {
+		.ball {
+			&__number {
+				p {
+					width: 75px;
+					height: 75px;
+					font-size: 2rem;
+				}
+			}
+		}
+		.receipt {
+			max-width: 300px;
+		}
+	}
+
+	.error {
+		&__box {
+			width: 400px;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.wrapper {
+		max-width: 700px;
+	}
+	.title {
+		&__logo {
+			img {
+				width: 120px;
+			}
+		}
+	}
+	.main {
+		.ball {
+			&__number {
+				p {
+					width: 85px;
+					height: 85px;
+				}
+			}
+		}
+	}
+	.error {
+		&__box {
+			height: 120px;
+		}
+	}
 }

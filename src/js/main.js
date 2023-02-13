@@ -81,8 +81,6 @@ const choseYourNumber = e => {
 			error.classList.add('display-flex')
 		}
 	}
-
-	console.log(userNumbers)
 }
 
 const currentData = () => {
@@ -195,6 +193,7 @@ const winner = () => {
 }
 
 const playGame = () => {
+	
 	while (lotteryNumbers.length < 6) {
 		const randomNumber = Math.round(Math.random() * 14) + 1
 
@@ -248,7 +247,6 @@ const playGame = () => {
 	showResult()
 	winner()
 
-
 	btnNumbers.forEach(item => item.setAttribute('class', ''))
 	userNumbers = []
 	lotteryNumbers = []
@@ -256,7 +254,3 @@ const playGame = () => {
 }
 
 document.addEventListener('DOMContentLoaded', main)
-
-// info na temat 6 cufr i tych samych oraz scss @media querys
-// poustawiać JS ładnie
-// ustaiwenia scss ładnie
