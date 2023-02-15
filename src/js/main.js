@@ -83,46 +83,11 @@ const choseYourNumber = e => {
 	}
 }
 
-const currentData = () => {
-	const data = new Date()
-	const addZero = value => {
-		return String(value).padStart(2, 0)
-	}
-	receiptDate.textContent = `${data.getDate()}.${addZero(data.getMonth() + 1)}.${data.getFullYear()} ${addZero(data.getHours())}:${addZero(data.getMinutes())}:${addZero(
-		data.getSeconds()
-	)}`
-}
-
 const resetColor = () => {
 	let i
 	for (i = 0; i < reset.length; i++) {
 		reset[i].style.background = 'radial-gradient(circle at 65% 15%, white 1px, #fff30f 3%, #e6b100 60%, #a37f06 100%)'
 	}
-}
-
-const congratsText = () => {
-	if (score === 0) {
-		congrats.innerHTML = `Nie trafiłeś żadnej liczby <br> Daj sobie jeszcze jedną szansę`
-	} else if (score < 2) {
-		congrats.innerHTML = `Trafiłeś ${score} raz <br> gratulacje`
-	} else {
-		congrats.innerHTML = `Trafiłeś ${score} razy <br> gratulacje`
-	}
-}
-
-const historyText = () => {
-	const historyItem = document.createElement('li')
-	if (score === 0) {
-		historyItem.textContent = userNumbers.join(' | ') + ' - Brak trafień'
-	} else if (score < 2) {
-		historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafienie`
-	} else if (score >= 5) {
-		historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafień`
-	} else {
-		historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafienia`
-	}
-
-	historyOl.append(historyItem)
 }
 
 const checkYourNumbers = () => {
@@ -162,19 +127,6 @@ const closeErrorInfo = () => {
 	error.classList.remove('display-flex')
 }
 
-const hideCoupon = () => {
-	coupon.setAttribute('style', 'display:none;')
-	title.setAttribute('style', 'display:none;')
-	startLottery.setAttribute('style', 'display:none;')
-}
-
-const showResult = () => {
-	ballNumber.setAttribute('style', 'display:flex;')
-	receipt.setAttribute('style', 'display:flex;')
-	history.setAttribute('style', 'display:flex;')
-	btnAgain.setAttribute('style', 'display:flex;')
-}
-
 const playAgain = () => {
 	coupon.setAttribute('style', 'display:flex;')
 	title.setAttribute('style', 'display:flex;')
@@ -183,17 +135,78 @@ const playAgain = () => {
 	receipt.setAttribute('style', 'display:none;')
 	btnAgain.setAttribute('style', 'display:none;')
 }
-const winner = () => {
-	if (score === 6) {
-		setTimeout(() => {
-			errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
-			error.classList.add('display-flex')
-		}, 2800)
+
+const loadFinalContent = () => {
+	const currentData = () => {
+		const data = new Date()
+		const addZero = value => {
+			return String(value).padStart(2, 0)
+		}
+		receiptDate.textContent = `${data.getDate()}.${addZero(data.getMonth() + 1)}.${data.getFullYear()} ${addZero(data.getHours())}:${addZero(data.getMinutes())}:${addZero(
+			data.getSeconds()
+		)}`
 	}
+	currentData()
+
+	const congratsText = () => {
+		if (score === 0) {
+			congrats.innerHTML = `Nie trafiłeś żadnej liczby <br> Daj sobie jeszcze jedną szansę`
+		} else if (score < 2) {
+			congrats.innerHTML = `Trafiłeś ${score} raz <br> gratulacje`
+		} else {
+			congrats.innerHTML = `Trafiłeś ${score} razy <br> gratulacje`
+		}
+	}
+	congratsText()
+
+	const historyText = () => {
+		const historyItem = document.createElement('li')
+		if (score === 0) {
+			historyItem.textContent = userNumbers.join(' | ') + ' - Brak trafień'
+		} else if (score < 2) {
+			historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafienie`
+		} else if (score >= 5) {
+			historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafień`
+		} else {
+			historyItem.textContent = userNumbers.join(' | ') + ` - ${score} trafienia`
+		}
+
+		historyOl.append(historyItem)
+	}
+	historyText()
+
+	const hideCoupon = () => {
+		coupon.setAttribute('style', 'display:none;')
+		title.setAttribute('style', 'display:none;')
+		startLottery.setAttribute('style', 'display:none;')
+	}
+	hideCoupon()
+
+	const showResult = () => {
+		ballNumber.setAttribute('style', 'display:flex;')
+		receipt.setAttribute('style', 'display:flex;')
+		history.setAttribute('style', 'display:flex;')
+		btnAgain.setAttribute('style', 'display:flex;')
+	}
+	showResult()
+
+	const winner = () => {
+		if (score === 6) {
+			setTimeout(() => {
+				errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
+				error.classList.add('display-flex')
+			}, 2800)
+		}
+	}
+	winner()
+
+	btnNumbers.forEach(item => item.setAttribute('class', ''))
+	userNumbers = []
+	lotteryNumbers = []
+	score = 0
 }
 
 const playGame = () => {
-	
 	while (lotteryNumbers.length < 6) {
 		const randomNumber = Math.round(Math.random() * 14) + 1
 
@@ -240,17 +253,7 @@ const playGame = () => {
 
 	receiptNumbers.textContent = userNumbers.join(' ')
 
-	currentData()
-	congratsText()
-	historyText()
-	hideCoupon()
-	showResult()
-	winner()
-
-	btnNumbers.forEach(item => item.setAttribute('class', ''))
-	userNumbers = []
-	lotteryNumbers = []
-	score = 0
+	loadFinalContent()
 }
 
 document.addEventListener('DOMContentLoaded', main)
