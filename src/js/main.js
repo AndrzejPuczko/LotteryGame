@@ -94,7 +94,7 @@ const loadFinalContent = () => {
 	if (score === 6) {
 		setTimeout(() => {
 			errorInfo.textContent = 'Trafiłeś szóstkę szczęściarzu'
-			error.classList.add('display-flex')
+			error.style.display = 'flex'
 		}, 2800)
 	}
 
