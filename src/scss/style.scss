@@ -233,59 +233,61 @@ body {
 		animation: show-result 1s 2.4s both;
 	}
 
-	.ball {
-		&__number {
-			display: none;
-			justify-content: center;
-			align-items: center;
-			margin-top: 20px;
-			gap: 10px;
+	.balls {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+		gap: 10px;
 
-			&--1 {
+		.ball {
+			
+			&__number--1 {
 				-webkit-animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
 				animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-			&--2 {
-				-webkit-animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-				animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-			&--3 {
-				-webkit-animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-				animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-			&--4 {
-				-webkit-animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-				animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-			&--5 {
-				-webkit-animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-				animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-			&--6 {
-				-webkit-animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-				animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
-			}
-
-			.reset {
 				box-shadow: 2px 2px 5px #5e5e5e;
 			}
-
-			p {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 40px;
-				height: 40px;
-				font-size: 1.6rem;
-				font-weight: bold;
-				text-decoration: underline;
-				color: $text;
-				background: $main-color;
-				border-radius: 50%;
+			&__number--2 {
+				-webkit-animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				animation: shake 0.8s 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				box-shadow: 2px 2px 5px #5e5e5e;
+			}
+			&__number--3 {
+				-webkit-animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				animation: shake 0.8s 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				box-shadow: 2px 2px 5px #5e5e5e;
+			}
+			&__number--4 {
+				-webkit-animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				animation: shake 0.8s 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				box-shadow: 2px 2px 5px #5e5e5e;
+			}
+			&__number--5 {
+				-webkit-animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				animation: shake 0.8s 1.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				box-shadow: 2px 2px 5px #5e5e5e;
+			}
+			&__number--6 {
+				-webkit-animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				animation: shake 0.8s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 both;
+				box-shadow: 2px 2px 5px #5e5e5e;
 			}
 		}
-	}
 
+		p {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 40px;
+			height: 40px;
+			font-size: 1.6rem;
+			font-weight: bold;
+			text-decoration: underline;
+			color: $text;
+			background: $main-color;
+			border-radius: 50%;
+		}
+	}
 	.receipt {
 		display: none; // ma być flex;
 		justify-content: space-between;
@@ -438,13 +440,11 @@ body {
 		}
 	}
 	.main {
-		.ball {
-			&__number {
-				p {
-					width: 75px;
-					height: 75px;
-					font-size: 2rem;
-				}
+		.balls {
+			p {
+				width: 75px;
+				height: 75px;
+				font-size: 2rem;
 			}
 		}
 		.receipt {
@@ -471,12 +471,10 @@ body {
 		}
 	}
 	.main {
-		.ball {
-			&__number {
-				p {
-					width: 85px;
-					height: 85px;
-				}
+		.balls {
+			p {
+				width: 85px;
+				height: 85px;
 			}
 		}
 	}
